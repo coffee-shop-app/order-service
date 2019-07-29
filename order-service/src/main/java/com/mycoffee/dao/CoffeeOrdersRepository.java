@@ -3,9 +3,9 @@ package com.mycoffee.dao;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.mycoffee.entity.CoffeeName;
+import com.mycoffee.entity.CoffeeOrder;
 
 @Repository
-public interface CoffeeNameDao extends CrudRepository<CoffeeName, Integer> {
+public interface CoffeeOrdersRepository extends CrudRepository<CoffeeOrder, Integer> {
 
 }
