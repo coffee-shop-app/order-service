@@ -4,20 +4,20 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-import com.mycoffee.dao.CoffeeOrdersDao;
+import com.mycoffee.dao.CoffeeOrdersRepository;
 import com.mycoffee.entity.CoffeeOrder;
 import com.mycoffee.model.CoffeeOrdersDto;
 
-@Component
+@Service
 public class CoffeeOrderService {
 
 	@Autowired
-	private CoffeeOrdersDao coffeeOrdersDao;
+	private CoffeeOrdersRepository coffeeOrdersRepository;
 	
 	public void saveCoffeeOrder(CoffeeOrdersDto coffeeOrderDto) {
-		coffeeOrdersDao.save(toCoffeeOrderEntity(coffeeOrderDto));
+		coffeeOrdersRepository.save(toCoffeeOrderEntity(coffeeOrderDto));
 	}
 	
 	private CoffeeOrder toCoffeeOrderEntity(CoffeeOrdersDto coffeeOrderDto) {
@@ -33,11 +33,11 @@ public class CoffeeOrderService {
 	}
 
 	public List<CoffeeOrder> getAllCoffeeOrders() {
-		return (List<CoffeeOrder>) coffeeOrdersDao.findAll();
+		return (List<CoffeeOrder>) coffeeOrdersRepository.findAll();
 	}
 	
 	public CoffeeOrder getCoffeeOrderById(int id) {
-		Optional<CoffeeOrder> coffeOrder = coffeeOrdersDao.findById(id);
+		Optional<CoffeeOrder> coffeOrder = coffeeOrdersRepository.findById(id);
         return coffeOrder.orElseThrow(() -> new RuntimeException("Couldn't find a Dog with id: " + id));
 	}
 

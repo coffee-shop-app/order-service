@@ -3,18 +3,18 @@ package com.mycoffee.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-import com.mycoffee.dao.CoffeeTypeDao;
+import com.mycoffee.dao.CoffeeTypeRepository;
 import com.mycoffee.entity.CoffeeType;
 
-@Component
+@Service
 public class CoffeeTypeService {
 
 	@Autowired
-	private CoffeeTypeDao coffeeTypeDao;
+	private CoffeeTypeRepository coffeeTypeRepository;
 	
 	public List<CoffeeType> fetchAllCoffeeTypes() {
-		return (List<CoffeeType>) coffeeTypeDao.findAll();
+		return (List<CoffeeType>) coffeeTypeRepository.findAll();
 	}
 }
