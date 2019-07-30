@@ -7,7 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,117 +15,71 @@ import javax.persistence.Table;
 public class CoffeeOrder {
 
 	@Id
+	@Column(name="id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
-	@Column(name = "coffee_name_id")
-	private int coffeeNameId;
-	@Column(name = "coffee_type_id")
-	private int coffeeTypeId;
+	private Long id;
+	
 	private String place;
+	
 	private String address;
-	private int rating;
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "coffee_name_id", referencedColumnName= "id", nullable=false, insertable=false, updatable=false)
-	private CoffeeName coffeeNameEntity;
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "coffee_type_id", referencedColumnName= "id", nullable=false, insertable=false, updatable=false)
-	private CoffeeType coffeeTypeEntity;
+	
+	private Long rating;
+	
+	@OneToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "coffee_name_id", nullable = false)
+    private CoffeeName coffeeName;
+	
+	@OneToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "coffee_type_id", nullable = false)
+    private CoffeeType coffeeType;
 
-	/**
-	 * @return the id
-	 */
-	public int getId() {
-		return id;
-	}
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(int id) {
-		this.id = id;
-	}
-	/**
-	 * @return the coffeeNameId
-	 */
-	public int getCoffeeNameId() {
-		return coffeeNameId;
-	}
-	/**
-	 * @param coffeeNameId the coffeeNameId to set
-	 */
-	public void setCoffeeNameId(int coffeeNameId) {
-		this.coffeeNameId = coffeeNameId;
-	}
-	/**
-	 * @return the coffeeTypeId
-	 */
-	public int getCoffeeTypeId() {
-		return coffeeTypeId;
-	}
-	/**
-	 * @param coffeeTypeId the coffeeTypeId to set
-	 */
-	public void setCoffeeTypeId(int coffeeTypeId) {
-		this.coffeeTypeId = coffeeTypeId;
-	}
-	/**
-	 * @return the place
-	 */
 	public String getPlace() {
 		return place;
 	}
-	/**
-	 * @param place the place to set
-	 */
+
 	public void setPlace(String place) {
 		this.place = place;
 	}
-	/**
-	 * @return the address
-	 */
+
 	public String getAddress() {
 		return address;
 	}
-	/**
-	 * @param address the address to set
-	 */
+
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	/**
-	 * @return the rating
-	 */
-	public int getRating() {
+
+	public Long getRating() {
 		return rating;
 	}
-	/**
-	 * @param rating the rating to set
-	 */
-	public void setRating(int rating) {
+
+	public void setRating(Long rating) {
 		this.rating = rating;
 	}
-	/**
-	 * @return the coffeeNameEntity
-	 */
-	public CoffeeName getCoffeeNameEntity() {
-		return coffeeNameEntity;
+
+	public CoffeeName getCoffeeName() {
+		return coffeeName;
 	}
-	/**
-	 * @param coffeeNameEntity the coffeeNameEntity to set
-	 */
-	public void setCoffeeNameEntity(CoffeeName coffeeNameEntity) {
-		this.coffeeNameEntity = coffeeNameEntity;
+
+	public void setCoffeeName(CoffeeName coffeeName) {
+		this.coffeeName = coffeeName;
 	}
-	/**
-	 * @return the coffeeTypeEntity
-	 */
-	public CoffeeType getCoffeeTypeEntity() {
-		return coffeeTypeEntity;
+
+	public CoffeeType getCoffeeType() {
+		return coffeeType;
 	}
-	/**
-	 * @param coffeeTypeEntity the coffeeTypeEntity to set
-	 */
-	public void setCoffeeTypeEntity(CoffeeType coffeeTypeEntity) {
-		this.coffeeTypeEntity = coffeeTypeEntity;
+
+	public void setCoffeeType(CoffeeType coffeeType) {
+		this.coffeeType = coffeeType;
 	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	
 }
