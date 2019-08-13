@@ -1,18 +1,39 @@
-# Build and Release Folders
-bin-debug/
-bin-release/
-[Oo]bj/
-[Bb]in/
+HELP.md
+#Added By Balakrishna to ignore list
+mvnw.cmd
+#Added By Balakrishna to ignore list
+mvnw
+target/
+#Commented By Balakrishna to ignore list
+#!.mvn/wrapper/maven-wrapper.jar
+#Added By Balakrishna to ignore list
+.mvn/**
 
-# Other files and folders
-.settings/
+!**/src/main/**
+!**/src/test/**
 
-# Executables
-*.swf
-*.air
-*.ipa
-*.apk
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+#.project
+.settings
+.springBeans
+.sts4-cache
 
-# Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
-# should NOT be excluded as they contain compiler settings and other important
-# information for Eclipse / Flash Builder.
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+
+### VS Code ###
+.vscode/
